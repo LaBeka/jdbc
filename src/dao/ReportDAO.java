@@ -13,5 +13,5 @@ public interface ReportDAO {
     void getStudentsAverageGrades()  throws SQLException;
     void getTop3Students()  throws SQLException;
     void getCoursesWithHighestAndLowestGrades()  throws SQLException;
-
+    Student getOldestStudent() throws SQLException;
 }

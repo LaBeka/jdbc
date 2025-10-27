@@ -167,4 +167,26 @@ public class ReportDAOImpl implements ReportDAO {
 
         }
     }
+
+    @Override
+    public Student getOldestStudent() throws SQLException {
+        String query = """
+            SELECT *
+            FROM students  order by age desc limit 1
+            """;
+        Student s = null;
+        try (Connection conn = DBConnector.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+
+            while (rs.next()) {
+                s = new Student(
+                        rs.getInt("student_id"),
+                        rs.getString("name"),
+                        rs.getInt("age"),
+                        rs.getString("city"));
+            }
+        }
+        return s;
+    }
 }
