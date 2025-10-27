@@ -1,10 +1,13 @@
 package dao;
 
+import models.Student;
+
 import java.sql.SQLException;
+import java.util.List;
 
 public interface ReportDAO {
 
-    void getAllStudents() throws SQLException;
+    List<Student> getAllStudents() throws SQLException;
     void getAverageGradePerCourse()  throws SQLException;
     void getCoursesWithTeachers()  throws SQLException;
     void getStudentsAverageGrades()  throws SQLException;

@@ -1,15 +1,21 @@
 package dao;
 
 import connection.DBConnector;
+import models.Student;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ReportDAOImpl implements ReportDAO {
     @Override
-    public void getAllStudents()  throws SQLException {
+    public List<Student> getAllStudents()  throws SQLException {
+
+        List<Student> students = new ArrayList<>();
+
 
         String query = "SELECT student_id, name, age, city FROM students ORDER BY name ASC";
 
@@ -17,17 +23,16 @@ public class ReportDAOImpl implements ReportDAO {
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
 
-            System.out.println("ID\tName\tAge\tCity");
-            System.out.println("------------------------------------");
             while (rs.next()) {
-                System.out.printf("%d\t%s\t%d\t%s%n",
+                Student s = new Student(
                         rs.getInt("student_id"),
                         rs.getString("name"),
                         rs.getInt("age"),
                         rs.getString("city"));
+                students.add(s);
             }
-
         }
+        return students;
     }
 
 

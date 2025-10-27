@@ -28,4 +28,14 @@ public class Student {
     public String getCity() {
         return city;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "student_id=" + student_id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", city='" + city + '\'' +
+                '}';
+    }
 }

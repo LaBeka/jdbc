@@ -10,7 +10,8 @@ public class Main {
         ReportDAOImpl pd = new ReportDAOImpl();
         try {
             System.out.println("\n=========Get all students=======");
-            pd.getAllStudents();
+            pd.getAllStudents().stream().forEach(System.out::println);
+
             System.out.println("\n===========Get Average Grade Per Course===============");
             pd.getAverageGradePerCourse();
             System.out.println("\n=========Get Courses With Highest And Lowest Grades =======");
